@@ -6,6 +6,7 @@ import {merge, Observable, of as observableOf} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {  startWith, switchMap, catchError, map } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
+import { PrediccionServicioService } from './servicio/prediccion-servicio.service';
 
 @Component({
   selector: 'app-prediccion-ordenes',
@@ -32,36 +33,36 @@ export class PrediccionOrdenesComponent {
     // this.exampleDatabase = new ExampleHttpDatabase(this._httpClient);
 
     // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+    // this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page)
-      .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.isLoadingResults = true;
-          return this.exampleDatabase!.getRepoIssues(
-            this.sort.active,
-            this.sort.direction,
-            this.paginator.pageIndex,
-          ).pipe(catchError(() => observableOf(null)));
-        }),
-        map((data: any) => {
-          // Flip flag to show that loading has finished.
-          this.isLoadingResults = false;
-          this.isRateLimitReached = data === null;
+    // merge(this.sort.sortChange, this.paginator.page)
+    //   .pipe(
+    //     startWith({}),
+    //     switchMap(() => {
+    //       this.isLoadingResults = true;
+    //       return this.exampleDatabase!.getRepoIssues(
+    //         this.sort.active,
+    //         this.sort.direction,
+    //         this.paginator.pageIndex,
+    //       ).pipe(catchError(() => observableOf(null)));
+    //     }),
+    //     map((data: any) => {
+    //       // Flip flag to show that loading has finished.
+    //       this.isLoadingResults = false;
+    //       this.isRateLimitReached = data === null;
 
-          if (data === null) {
-            return [];
-          }
+    //       if (data === null) {
+    //         return [];
+    //       }
 
-          // Only refresh the result length if there is new data. In case of rate
-          // limit errors, we do not want to reset the paginator to zero, as that
-          // would prevent users from re-triggering requests.
-          this.resultsLength = data.total_count;
-          return data.items;
-        }),
-      )
-      .subscribe(data => (this.data = data));
+    //       // Only refresh the result length if there is new data. In case of rate
+    //       // limit errors, we do not want to reset the paginator to zero, as that
+    //       // would prevent users from re-triggering requests.
+    //       this.resultsLength = data.total_count;
+    //       return data.items;
+    //     }),
+    //   )
+    //   .subscribe(data => (this.data = data));
   }
 
 
@@ -138,12 +139,20 @@ export class PrediccionOrdenesComponent {
     }
   ];
 
-  constructor() { }
+  constructor(private customerServicio : PrediccionServicioService) {
+
+
+   }
 
   ngOnInit(): void {
-    // this.loadCustomers();
+    this.customerServicio.ConsultarClientesProductos().subscribe(resp =>{
+      console.log(resp);
+      
+    });
   }
+  aplicarFiltroTabla(event : Event){
 
+  }
   // ngAfterViewInit(): void {
   //   this.dataSource.sort = this.sort;
   //   this.dataSource.paginator = this.paginator;
@@ -205,4 +214,5 @@ export class ExampleHttpDatabase {
 
     return this._httpClient.get<GithubApi>(requestUrl);
   }
+
 }

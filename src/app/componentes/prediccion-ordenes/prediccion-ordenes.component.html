@@ -1,3 +1,9 @@
+<mat-card style="margin: 20px 40px 40px 40px;">
+  <mat-card-content class="dashboard-card-content"> 
+    <mat-form-field MatFormFieldControl >
+      <mat-label>Buscar</mat-label>
+      <input matInput (keyup) ="aplicarFiltroTabla($event)" #input>
+  </mat-form-field>      
 <div class="example-container mat-elevation-z8">
     <!-- @if (isLoadingResults || isRateLimitReached) {
       <div class="example-loading-shade">
@@ -13,8 +19,8 @@
     } -->
   
     <div class="example-table-container">
-  
-      <table mat-table [dataSource]="data" class="example-table"
+
+    <table mat-table [dataSource]="data" class="example-table"
              matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
         <!-- Number Column -->
         <ng-container matColumnDef="number">
@@ -63,4 +69,6 @@
   
     <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results"></mat-paginator>
   </div>
+</mat-card-content>
+</mat-card>
   
