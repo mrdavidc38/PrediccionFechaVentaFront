@@ -15,7 +15,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class PrediccionOrdenesComponent {
   private _httpClient = inject(HttpClient);
 
-  displayedColumns: string[] = ['created', 'state', 'number', 'title'];
+  displayedColumns: string[] = ['created', 'state',  'title', 'actions'];
    exampleDatabase!: ExampleHttpDatabase | null;
   data: GithubIssue[] = [];
 
@@ -178,7 +178,7 @@ export class PrediccionOrdenesComponent {
     // Implementa la lógica para ver las órdenes del cliente
   }
 
-  createNewOrder(customer: Customer): void {
+  newOrder(customer: Customer): void {
     console.log('Create new order for:', customer.customerName);
     // Implementa la lógica para crear una nueva orden
   }

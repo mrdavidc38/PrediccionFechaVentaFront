@@ -34,6 +34,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppRoutingModule } from './app-routing-module';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,7 @@ import { MatSortModule } from '@angular/material/sort';
     HttpClientModule,ReactiveFormsModule,
     FormsModule,
     MatTableModule,
+    MatPaginatorModule,
     AppRoutingModule,
     MatSnackBarModule,
     MatSelectModule,

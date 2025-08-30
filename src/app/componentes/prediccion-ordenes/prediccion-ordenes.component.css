@@ -6,12 +6,12 @@
   .example-table-container {
     position: relative;
     min-height: 200px;
-    max-height: 400px;
+    max-height: 800px;
     overflow: auto;
   }
   
   table {
-    width: 100%;
+    width: 100%;                  
   }
   
   .example-loading-shade {
@@ -29,16 +29,16 @@
   
   .example-rate-limit-reached {
     max-width: 360px;
-    text-align: center;
+    /* text-align: center; */
   }
   
   /* Column Widths */
   .mat-column-number,
   .mat-column-state {
-    width: 64px;
+    width: 200px;
   }
   
   .mat-column-created {
-    width: 124px;
+    width: 200px;
   }
   
