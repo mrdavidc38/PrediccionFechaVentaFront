@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <h1>Sistema Gestión de fondos</h1>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span style="flex: 1 1 auto;"></span>
+      <label style="font-size: 14px; margin-right: 20px;">
+        <!-- {{correoUsuario}} | {{rolUsuario}} -->
+      </label>
+      <button mat-icon-button (click)="cerrarSesion()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav opened="true" mode="side" style="width:250;">
+      <mat-nav-list>
+        <mat-list-item routerLink="/prediccion-ordenes" routerLinkActive="active">
+            <mat-icon matListItemIcon>manage_search</mat-icon>
+            <div mat-line>Prediccion de Ordenes</div>
+          </mat-list-item>
+
+            <mat-list-item routerLink="/ordenes" routerLinkActive="active">
+          <mat-icon matListItemIcon>person_add</mat-icon>
+          <div mat-line>ver ordenes</div>
+        </mat-list-item>
+         
+
+        <mat-list-item routerLink="/agregar-orden" routerLinkActive="active">
+            <mat-icon matListItemIcon>add_circle</mat-icon>
+            <div mat-line>agregar orden</div>
+          </mat-list-item>
+
+      </mat-nav-list>
+    </mat-sidenav>
+ 
+    <mat-sidenav-content>
+      <div style="padding: 100px;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content> 
+  </mat-sidenav-container>
+
+  
