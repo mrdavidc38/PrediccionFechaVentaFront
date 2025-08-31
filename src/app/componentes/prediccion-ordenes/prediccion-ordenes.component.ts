@@ -22,7 +22,9 @@ export class PrediccionOrdenesComponent {
 
   data: any[] = [];
 
-  filteredOrders :any[] = [];
+  // filteredOrders :any[] = [];
+  filteredOrders = new MatTableDataSource<any>();
+
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
@@ -32,11 +34,18 @@ export class PrediccionOrdenesComponent {
 
   ngAfterViewInit() {
   
-
+    this.filteredOrders.sort = this.sort;
+    this.filteredOrders.paginator = this.paginator;
+    
+    // Configurar ordenamiento personalizado para fechas
+    this.sort.sortChange.subscribe(() => {
+      // this.paginator.pageIndex = 0; // Resetear a la primera página
+      this.sortData();
+    });
     //If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+    // this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page)
+    merge(this.paginator.page)
       .pipe(
         startWith({}),
         switchMap(() => {
@@ -69,9 +78,14 @@ export class PrediccionOrdenesComponent {
       .subscribe(data => 
         
         {
-          this.filteredOrders = data.records;
+//           this.filteredOrders.data = data.records;
+// this.filteredOrders.sort = this.sort;
+// this.filteredOrders.paginator = this.paginator;
+
+        //   this.filteredOrders = data.records;
           this.data = data.records;
-        this.resultsLength = data.totalRecords}
+         this.resultsLength = data.totalRecords
+      }
       );
   }
 
@@ -89,7 +103,7 @@ export class PrediccionOrdenesComponent {
   }
   aplicarFiltroTabla(event : Event){
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-    this.filteredOrders = this.data.filter(order => 
+    this.filteredOrders.data = this.data.filter(order => 
       // order.orderId.toString().includes(filterValue) ||
       order.customerName.toLowerCase().includes(filterValue) 
       // order.shipcity.toLowerCase().includes(filterValue) ||
@@ -122,9 +136,42 @@ export class PrediccionOrdenesComponent {
   
 }
 
+sortData(): void {
+  const sortedArray = [...this.data ];
+  
+  if (!this.sort.active || this.sort.direction === '') {
+    this.data  = sortedArray;
+    return;
+  }
 
+  this.data  = sortedArray.sort((a, b) => {
+    const isAsc = this.sort.direction === 'asc';
+    
+    switch (this.sort.active) {
+      case 'created': // Customer Name
+        return this.compare(a.customerName, b.customerName, isAsc);
+      
+      case 'title': // Last Order Date
+        return this.compareDate(a.lastOrderDate, b.lastOrderDate, isAsc);
+      
+      case 'state': // Next Predicted Order
+        return this.compareDate(a.nextPredictedOrder, b.nextPredictedOrder, isAsc);
+      
+      default:
+        return 0;
+    }
+  });
+}
 
+compare(a: string | number, b: string | number, isAsc: boolean): number {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
 
+compareDate(a: string, b: string, isAsc: boolean): number {
+  const dateA = new Date(a).getTime();
+  const dateB = new Date(b).getTime();
+  return (dateA < dateB ? -1 : 1) * (isAsc ? 1 : -1);
+}
 
 }
 
