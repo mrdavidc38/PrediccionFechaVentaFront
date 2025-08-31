@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "predccionFechaVenta:build:production"
+              "buildTarget": "predccionFechaVenta:build:production"
             },
             "development": {
-              "browserTarget": "predccionFechaVenta:build:development"
+              "buildTarget": "predccionFechaVenta:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "predccionFechaVenta:build"
+            "buildTarget": "predccionFechaVenta:build"
           }
         },
         "test": {

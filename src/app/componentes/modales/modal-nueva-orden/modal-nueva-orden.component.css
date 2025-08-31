@@ -1,0 +1,15 @@
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  
+  .full-width {
+    grid-column: span 3;
+  }
+  
+  h3 {
+    margin-top: 16px;
+    font-weight: 600;
+  }
+  
