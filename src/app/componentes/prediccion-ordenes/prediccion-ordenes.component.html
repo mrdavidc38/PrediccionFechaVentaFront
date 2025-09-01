@@ -16,7 +16,7 @@
         <!-- Title Column -->
         <ng-container matColumnDef="title">
           <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Last Order Date</th>
-          <td mat-cell *matCellDef="let row">{{row.lastOrderDate}}</td>
+          <td mat-cell *matCellDef="let row">{{row.lastOrderDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
@@ -36,7 +36,7 @@
         <!-- State Column -->
         <ng-container matColumnDef="state">
           <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Next Predicted Order</th>
-          <td mat-cell *matCellDef="let row">{{row.nextPredictedOrder}}</td>
+          <td mat-cell *matCellDef="let row">{{row.nextPredictedOrder | date:'yyyy-MM-dd HH:mm:ss'}}</td>
         </ng-container>
   
         <!-- Created Column -->
