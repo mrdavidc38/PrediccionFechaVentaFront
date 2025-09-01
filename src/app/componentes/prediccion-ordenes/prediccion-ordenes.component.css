@@ -1,44 +1,70 @@
-/* Structure */
+.example-table-container {
+  position: relative;
+  max-height: 600px;
+  overflow: auto;
+}
+
+.example-table {
+  width: 100%;
+}
+
+.actions-cell {
+  width: 250px;
+  padding: 8px;
+}
+
+.action-button {
+  margin-right: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  height: 32px;
+  min-width: 100px;
+}
+
+.view-button {
+  background-color: #f44336 !important;
+  color: white !important;
+}
+
+.new-button {
+  background-color: #3f51b5 !important;
+  color: white !important;
+}
+
+.mat-mdc-header-cell {
+  font-weight: 600;
+  color: #424242;
+}
+
+.mat-mdc-cell {
+  padding: 12px 8px;
+}
+
 .example-container {
-    position: relative;
+  background: white;
+  border-radius: 4px;
+}
+
+.dashboard-card-content {
+  padding: 20px;
+}
+.link-button {
+  text-transform: none;   /* evita mayúsculas forzadas */
+  font-weight: normal;    /* texto normal */
+  background: none !important;  /* quita fondo */
+  box-shadow: none !important;  /* quita sombra */
+  padding: 0 8px;         /* ajusta espacio lateral */
+  min-width: auto;        /* quita ancho mínimo de Material */
+}
+@media (max-width: 768px) {
+  .actions-cell {
+    width: auto;
   }
   
-  .example-table-container {
-    position: relative;
-    min-height: 200px;
-    max-height: 400px;
-    overflow: auto;
-  }
-  
-  table {
+  .action-button {
+    margin-bottom: 4px;
+    display: block;
     width: 100%;
   }
-  
-  .example-loading-shade {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 56px;
-    right: 0;
-    background: rgba(0, 0, 0, 0.15);
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .example-rate-limit-reached {
-    max-width: 360px;
-    text-align: center;
-  }
-  
-  /* Column Widths */
-  .mat-column-number,
-  .mat-column-state {
-    width: 64px;
-  }
-  
-  .mat-column-created {
-    width: 124px;
-  }
-  
+
+}

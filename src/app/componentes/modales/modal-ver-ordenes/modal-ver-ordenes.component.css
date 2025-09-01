@@ -1,0 +1,27 @@
+.mat-dialog-content {
+    max-height: 500px;
+    width: 100%;
+  }
+  .search-container {
+    margin-bottom: 20px;
+  }
+  .full-width {
+    width: 100%;
+  }
+  .table-container {
+    max-height: 400px;
+    overflow: auto;
+  }
+  .orders-table th, 
+  .orders-table td {
+    padding: 8px 12px; /* más espacio interno */
+    white-space: nowrap; /* evita que el texto se corte en varias líneas */
+    overflow: hidden;
+    text-overflow: ellipsis; /* agrega "..." si se pasa del ancho */
+  }
+  .ship-info {
+    line-height: 1.2;
+  }
+  .mat-dialog-actions {
+    padding: 16px 0;
+  }

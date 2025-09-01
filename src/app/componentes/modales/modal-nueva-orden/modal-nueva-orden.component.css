@@ -1,0 +1,207 @@
+::ng-deep .mat-mdc-dialog-container {
+    padding: 0 !important;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  ::ng-deep .mat-mdc-dialog-surface {
+    padding: 0 !important;
+  }
+  
+  /* Header verde */
+  .dialog-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 24px;
+    margin: 0;
+  }
+  
+  .dialog-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  /* Contenido del diálogo */
+  .dialog-content {
+    padding: 24px;
+    background-color: #fafafa;
+  }
+  
+  /* Títulos de sección */
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 20px 0 16px 0;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+  }
+  
+  .section-title:first-child {
+    margin-top: 0;
+  }
+  
+  /* Grid de formulario */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  /* Campos personalizados - estilo underline */
+  .custom-field {
+    background-color: transparent;
+  }
+  
+  /* Estilos para el underline (línea inferior) */
+  ::ng-deep .custom-field .mat-mdc-form-field-underline {
+    background-color: #ccc;
+  }
+  
+  ::ng-deep .custom-field .mat-mdc-form-field-ripple {
+    background-color: #4CAF50;
+  }
+  
+  ::ng-deep .custom-field.mat-focused .mat-mdc-form-field-underline {
+    background-color: #4CAF50;
+  }
+  
+  /* Ocultar outline si existe */
+  ::ng-deep .custom-field .mat-mdc-form-field-outline {
+    display: none;
+  }
+  
+  ::ng-deep .custom-field .mdc-notched-outline {
+    display: none;
+  }
+  
+  /* Estilos del label */
+  ::ng-deep .custom-field .mat-mdc-form-field-label {
+    color: #666;
+    font-size: 16px;
+  }
+  
+  ::ng-deep .custom-field.mat-focused .mat-mdc-form-field-label {
+    color: #4CAF50;
+  }
+  
+  /* Estilos del input */
+  ::ng-deep .custom-field .mat-mdc-input-element {
+    color: #333;
+    font-size: 16px;
+    border: none;
+    background: transparent;
+  }
+  
+  ::ng-deep .custom-field .mat-mdc-input-element::placeholder {
+    color: #999;
+  }
+  
+  /* Línea inferior por defecto */
+  ::ng-deep .custom-field::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #ccc;
+    transition: background-color 0.3s ease;
+  }
+  
+  ::ng-deep .custom-field.mat-focused::after {
+    background-color: #4CAF50;
+    height: 2px;
+  }
+  
+  /* Estilos específicos para selects */
+  ::ng-deep .custom-field .mat-mdc-select-value {
+    color: #333;
+    font-size: 16px;
+  }
+  
+  ::ng-deep .custom-field .mat-mdc-select-placeholder {
+    color: #999;
+  }
+  
+  ::ng-deep .custom-field .mat-mdc-select-arrow {
+    color: #666;
+  }
+  
+  ::ng-deep .custom-field.mat-focused .mat-mdc-select-arrow {
+    color: #4CAF50;
+  }
+  
+  /* Ajustes para el fondo del campo */
+  ::ng-deep .custom-field .mat-mdc-form-field-flex {
+    background: transparent;
+    border: none;
+    padding-bottom: 8px;
+  }
+  
+  ::ng-deep .custom-field .mat-mdc-form-field-infix {
+    border: none;
+    padding: 8px 0;
+    min-height: auto;
+  }
+  
+  /* Campos de fecha con iconos */
+  .date-field ::ng-deep .mat-datepicker-toggle {
+    color: #666;
+  }
+  
+  /* Acciones del diálogo */
+  .dialog-actions {
+    padding: 16px 24px;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .close-button {
+    color: #666;
+    margin-right: 12px;
+    font-weight: 500;
+  }
+  
+  .save-button {
+    background-color: #4CAF50 !important;
+    color: white !important;
+    font-weight: 500;
+    padding: 0 24px;
+  }
+  
+  .save-button:hover {
+    background-color: #45a049 !important;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    
+    .dialog-content {
+      padding: 16px;
+    }
+    
+    .dialog-header {
+      padding: 16px;
+    }
+  }
+  
+  /* Ajustes para selects */
+  ::ng-deep .mat-mdc-select-arrow {
+    color: #666;
+  }
+  
+  ::ng-deep .custom-field.mat-focused .mat-mdc-select-arrow {
+    color: #4CAF50;
+  }

@@ -11,7 +11,7 @@ const routes: Routes = [
         { path: 'prediccion-ordenes', component: PrediccionOrdenesComponent },
         { path: 'ordenes', component: OrdenesComponent },
         { path: 'agregar-orden', component: FormularioOrdenesComponent },
-        { path: '', redirectTo: 'ordenes', pathMatch: 'full' }
+        { path: '', redirectTo: 'prediccion-ordenes', pathMatch: 'full' }
       ]
     }
   ];

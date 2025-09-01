@@ -34,6 +34,15 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppRoutingModule } from './app-routing-module';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ModalVerOrdenesComponent } from './componentes/modales/modal-ver-ordenes/modal-ver-ordenes.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatChipsModule } from '@angular/material/chips';
+import { ModalNuevaOrdenComponent } from './componentes/modales/modal-nueva-orden/modal-nueva-orden.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { CurrencyPipe } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,14 +50,18 @@ import { MatSortModule } from '@angular/material/sort';
     PrediccionOrdenesComponent,
     OrdenesComponent,
     FormularioOrdenesComponent,
-    LayoutComponent
+    LayoutComponent, ModalVerOrdenesComponent, ModalNuevaOrdenComponent
   ],
   imports: [
     BrowserModule,
+    MatChipsModule,
     BrowserAnimationsModule,
     HttpClientModule,ReactiveFormsModule,
     FormsModule,
     MatTableModule,
+    MatDialogModule,
+    MatInputModule,
+    MatPaginatorModule,
     AppRoutingModule,
     MatSnackBarModule,
     MatSelectModule,
@@ -71,9 +84,13 @@ import { MatSortModule } from '@angular/material/sort';
     // MatPaginatorModule,
     MatSortModule,
    // AppRoutingModule,
+   MatDatepickerModule,
+   MatNativeDateModule,
+   MatFormFieldModule,
+   MatInputModule,
     BrowserAnimationsModule,MatTableModule
   ],
-  providers: [],
+  providers: [ CurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
