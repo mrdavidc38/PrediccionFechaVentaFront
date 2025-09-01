@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gráfica con D3</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <input id="dataInput" type="text" value="4,8,15,16">
+  <button onclick="updateChart()">Update Data</button>
+  <svg id="chart" width="500" height="200"></svg>
+
+  <script>
+    function updateChart() {
+      const input = document.getElementById("dataInput").value;
+      const data = input.split(",").map(Number);
+
+      const svg = d3.select("#chart");
+      svg.selectAll("*").remove();
+
+      const barHeight = 30;
+      const colors = ["#e63946", "#f1faee", "#a8dadc", "#457b9d", "#1d3557"];
+
+      svg.attr("height", barHeight * data.length);
+
+      svg.selectAll("rect")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("x", 0)
+        .attr("y", (d, i) => i * barHeight)
+        .attr("width", d => d * 10)
+        .attr("height", barHeight - 5)
+        .attr("fill", (d, i) => colors[i % colors.length]);
+    }
+  </script>
+</body>
+</html>
