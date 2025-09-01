@@ -1,3 +1,4 @@
+import { OrderDetail } from "./OrderDetail";
 
 
 export interface Order {
@@ -15,8 +16,9 @@ export interface Order {
     shipregion: string | null;
     shippostalcode: string | null;
     shipcountry: string;
+    Qty: number;
     // cust: Customer | null;
     // emp: Employee;
-    // orderDetails: OrderDetail[];
+     orderDetails?: OrderDetail[];
     // shipper: Shipper;
 }

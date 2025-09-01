@@ -18,7 +18,7 @@ import { ModalVerOrdenesComponent } from '../modales/modal-ver-ordenes/modal-ver
 export class PrediccionOrdenesComponent {
   private _httpClient = inject(HttpClient);
 
-  displayedColumns: string[] = ['created', 'state',  'title', 'actions'];
+  displayedColumns: string[] = ['created','title', 'state',   'actions'];
 
   data: any[] = [];
 

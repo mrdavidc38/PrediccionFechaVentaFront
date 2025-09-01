@@ -12,8 +12,12 @@
     max-height: 400px;
     overflow: auto;
   }
-  .orders-table {
-    width: 100%;
+  .orders-table th, 
+  .orders-table td {
+    padding: 8px 12px; /* más espacio interno */
+    white-space: nowrap; /* evita que el texto se corte en varias líneas */
+    overflow: hidden;
+    text-overflow: ellipsis; /* agrega "..." si se pasa del ancho */
   }
   .ship-info {
     line-height: 1.2;

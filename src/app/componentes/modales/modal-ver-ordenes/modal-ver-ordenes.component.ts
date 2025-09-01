@@ -20,18 +20,22 @@ export class ModalVerOrdenesComponent {
   orders: any[] = [];
   filteredOrders: any[] = [];
   displayedColumns: string[] = [
-    'freight',
-    'orderdate',
-    'orderDetails',
-
+    // 'freight',
+    'orderid',
     'requireddate',
+    'shippeddate',
+    'shipname',
+    // 'orderdate',
+    // 'orderDetails',
+
+  
     'shipaddress',
     'shipcity',
-    'shipcountry',
-    'shipname',
-    'shippeddate',
-    'shipperid',
-    'shippostalcode'
+    // 'shipcountry',
+    
+    
+    
+    // 'shippostalcode'
   ];
   // displayedColumns: string[] = ['orderId', 'orderDate', 'shippedDate', 'freight', 'shipInfo', 'actions'];
 

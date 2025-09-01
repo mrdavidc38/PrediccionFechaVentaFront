@@ -5,6 +5,7 @@ import { NuevaordenservicioService } from './servicio/nuevaordenservicio.service
 import { forkJoin } from 'rxjs';
 import { Order } from 'src/app/shared/interfaces/Order';
 import { CurrencyPipe } from '@angular/common';
+import { OrderDetail } from 'src/app/shared/interfaces/OrderDetail';
 @Component({
   selector: 'app-modal-nueva-orden',
 
@@ -67,44 +68,75 @@ export class ModalNuevaOrdenComponent implements OnInit {
   }
   save() {
     if (this.orderForm.valid) {
+      var detalle: OrderDetail = {} as OrderDetail;
       const formValues = this.orderForm.value;
+  
+      
       var id = parseInt(this.data.customerName);
       const order: Order = {
         orderid: 0, // se genera en backend normalmente
-        custid: id , // si no se maneja en este form
-        empid: formValues.employee, 
-        orderdate :new Date(formValues.orderDate).toISOString(),
-        requireddate : new Date(formValues.requiredDate).toISOString(),
-        shippeddate : new Date(formValues.shippedDate).toISOString(), 
+        custid: id, // si no se maneja en este form
+        empid: formValues.employee,
+        orderdate: new Date(formValues.orderDate).toISOString(),
+        requireddate: new Date(formValues.requiredDate).toISOString(),
+        shippeddate: new Date(formValues.shippedDate).toISOString(),
         shipperid: formValues.shipper,
-        freight: formValues.freight,
+        freight: this.parseToDecimal(formValues.freight),
         shipname: formValues.shipName,
         shipaddress: formValues.shipAddress,
         shipcity: formValues.shipCity,
         shipregion: null, // no está en tu form
         shippostalcode: null, // no está en tu form
         shipcountry: formValues.shipCountry,
-        // Si tu API espera detalles de orden puedes mapearlos así:
-        // orderDetails: [
-        //   {
-        //     productId: formValues.product,
-        //     unitPrice: formValues.unitPrice,
-        //     quantity: formValues.quantity,
-        //     discount: formValues.discount
-        //   }
-        // ]
+        orderDetails: [],
+        Qty: formValues.quantity
       };
+      detalle.discount = this.parseToDecimal(formValues.discount);
+      detalle.productid = this.parseToDecimal(formValues.product);
+      detalle.qty = formValues.quantity;
+      detalle.unitprice = this.parseToDecimal(formValues.unitPrice);
+      order.orderDetails?.push(detalle);
+
       this.servicoCreacionOrdenes.CrearOrden(order).subscribe(res =>{
-        
+         this.dialogRef.close(this.orderForm.value);
       })
-      // this.dialogRef.close(this.orderForm.value);
+     
     }}
     onInput(event: any, controlName: string) {
       const input = event.target as HTMLInputElement;
       input.value = input.value.replace(/[^0-9.]/g, '');
       this.orderForm.get(controlName)?.setValue(input.value);
     }
-    
+    parseToDecimalWithPrecision(value: string | number, decimals: number = 2): number {
+      const result = this.parseToDecimal(value);
+      return Math.round(result * Math.pow(10, decimals)) / Math.pow(10, decimals);
+    }
+
+    parseToDecimal(value: string | number): number {
+      if (value === null || value === undefined || value === '') {
+        return 0;
+      }
+      
+      // Si ya es un número, devolverlo
+      if (typeof value === 'number') {
+        return value;
+      }
+      
+      // Convertir a string y limpiar
+      let cleanValue = value.toString();
+      
+      // Remover espacios al inicio y final
+      cleanValue = cleanValue.trim();
+      
+      // Remover símbolos de moneda, comas, espacios internos
+      cleanValue = cleanValue.replace(/[$,\s]/g, '');
+      
+      // Convertir a número
+      const numericValue = parseFloat(cleanValue);
+      
+      // Validar que sea un número válido
+      return isNaN(numericValue) ? 0 : numericValue;
+    }
     formatCurrency(controlName: string) {
       let value = this.orderForm.get(controlName)?.value;
       if (value !== null && value !== '') {
