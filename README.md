@@ -1,6 +1,11 @@
-# PredccionFechaVenta
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
+
+Este proyecto fue creado en Angular cli 17 y Angular material 17. Aqui los comandos para su instalcion.
+
+npm install -g @angular/cli@17
+ng add @angular/material@17
+
+
 
 ## Development server
 
