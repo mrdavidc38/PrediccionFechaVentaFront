@@ -14,10 +14,10 @@
   }
   .orders-table th, 
   .orders-table td {
-    padding: 8px 12px; /* más espacio interno */
-    white-space: nowrap; /* evita que el texto se corte en varias líneas */
+    padding: 8px 12px; 
+    white-space: nowrap; 
     overflow: hidden;
-    text-overflow: ellipsis; /* agrega "..." si se pasa del ancho */
+    text-overflow: ellipsis; 
   }
   .ship-info {
     line-height: 1.2;

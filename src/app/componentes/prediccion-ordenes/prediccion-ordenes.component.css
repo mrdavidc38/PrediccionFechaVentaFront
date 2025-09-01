@@ -49,12 +49,12 @@
   padding: 20px;
 }
 .link-button {
-  text-transform: none;   /* evita mayúsculas forzadas */
-  font-weight: normal;    /* texto normal */
-  background: none !important;  /* quita fondo */
-  box-shadow: none !important;  /* quita sombra */
-  padding: 0 8px;         /* ajusta espacio lateral */
-  min-width: auto;        /* quita ancho mínimo de Material */
+  text-transform: none;   
+  font-weight: normal;    
+  background: none !important;  
+  box-shadow: none !important;  
+  padding: 0 8px;         
+  min-width: auto;        
 }
 @media (max-width: 768px) {
   .actions-cell {

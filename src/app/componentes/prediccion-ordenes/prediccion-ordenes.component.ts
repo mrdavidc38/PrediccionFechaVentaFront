@@ -22,7 +22,7 @@ export class PrediccionOrdenesComponent {
 
   data: any[] = [];
 
-  // filteredOrders :any[] = [];
+  
   filteredOrders = new MatTableDataSource<any>();
 
   resultsLength = 0;
@@ -58,7 +58,7 @@ export class PrediccionOrdenesComponent {
           ).pipe(catchError(() => observableOf(null)));
         }),
         map((data: any) => {
-          // Flip flag to show that loading has finished.
+          
           this.isLoadingResults = false;
           this.isRateLimitReached = data === null;
 
@@ -96,8 +96,8 @@ export class PrediccionOrdenesComponent {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
     this.filteredOrders.data = this.data.filter(order => 
       // order.orderId.toString().includes(filterValue) ||
-      order.customerName.toLowerCase().includes(filterValue) 
-      // order.shipcity.toLowerCase().includes(filterValue) ||
+      order.customerName.toLowerCase().includes(filterValue) ||
+      order.shipcity.toLowerCase().includes(filterValue) 
       // order.shipcountry.toLowerCase().includes(filterValue)
     );
   }
@@ -139,7 +139,7 @@ sortData(): void {
     const isAsc = this.sort.direction === 'asc';
     
     switch (this.sort.active) {
-      case 'created': // Customer Name
+      case 'created': 
         return this.comparar(a.customerName, b.customerName, isAsc);
       
       case 'title': 

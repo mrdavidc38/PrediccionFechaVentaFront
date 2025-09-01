@@ -42,7 +42,7 @@
     margin-top: 0;
   }
   
-  /* Grid de formulario */
+  
   .form-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -55,12 +55,12 @@
     margin-bottom: 16px;
   }
   
-  /* Campos personalizados - estilo underline */
+  
   .custom-field {
     background-color: transparent;
   }
   
-  /* Estilos para el underline (línea inferior) */
+
   ::ng-deep .custom-field .mat-mdc-form-field-underline {
     background-color: #ccc;
   }
@@ -73,7 +73,7 @@
     background-color: #4CAF50;
   }
   
-  /* Ocultar outline si existe */
+
   ::ng-deep .custom-field .mat-mdc-form-field-outline {
     display: none;
   }
@@ -82,7 +82,7 @@
     display: none;
   }
   
-  /* Estilos del label */
+ 
   ::ng-deep .custom-field .mat-mdc-form-field-label {
     color: #666;
     font-size: 16px;
@@ -92,7 +92,7 @@
     color: #4CAF50;
   }
   
-  /* Estilos del input */
+ 
   ::ng-deep .custom-field .mat-mdc-input-element {
     color: #333;
     font-size: 16px;
@@ -104,7 +104,7 @@
     color: #999;
   }
   
-  /* Línea inferior por defecto */
+ 
   ::ng-deep .custom-field::after {
     content: '';
     position: absolute;
@@ -121,7 +121,7 @@
     height: 2px;
   }
   
-  /* Estilos específicos para selects */
+ 
   ::ng-deep .custom-field .mat-mdc-select-value {
     color: #333;
     font-size: 16px;
