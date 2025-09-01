@@ -37,13 +37,13 @@ export class PrediccionOrdenesComponent {
     this.filteredOrders.sort = this.sort;
     this.filteredOrders.paginator = this.paginator;
     
-    // Configurar ordenamiento personalizado para fechas
+   
     this.sort.sortChange.subscribe(() => {
-      // this.paginator.pageIndex = 0; // Resetear a la primera página
+      // this.paginator.pageIndex = 0; 
       this.sortData();
     });
-    //If the user changes the sort order, reset back to the first page.
-    // this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+  
+
 
     merge(this.paginator.page)
       .pipe(
@@ -140,13 +140,13 @@ sortData(): void {
     
     switch (this.sort.active) {
       case 'created': // Customer Name
-        return this.compare(a.customerName, b.customerName, isAsc);
+        return this.comparar(a.customerName, b.customerName, isAsc);
       
-      case 'title': // Last Order Date
-        return this.compareDate(a.lastOrderDate, b.lastOrderDate, isAsc);
+      case 'title': 
+        return this.compararFecha(a.lastOrderDate, b.lastOrderDate, isAsc);
       
-      case 'state': // Next Predicted Order
-        return this.compareDate(a.nextPredictedOrder, b.nextPredictedOrder, isAsc);
+      case 'state': 
+        return this.compararFecha(a.nextPredictedOrder, b.nextPredictedOrder, isAsc);
       
       default:
         return 0;
@@ -154,11 +154,11 @@ sortData(): void {
   });
 }
 
-compare(a: string | number, b: string | number, isAsc: boolean): number {
+comparar(a: string | number, b: string | number, isAsc: boolean): number {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
 
-compareDate(a: string, b: string, isAsc: boolean): number {
+compararFecha(a: string, b: string, isAsc: boolean): number {
   const dateA = new Date(a).getTime();
   const dateB = new Date(b).getTime();
   return (dateA < dateB ? -1 : 1) * (isAsc ? 1 : -1);
