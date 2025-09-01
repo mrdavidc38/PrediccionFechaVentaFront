@@ -54,7 +54,8 @@ export class PrediccionOrdenesComponent {
           this.isLoadingResults = true;
           return this.customerServicio.ConsultarClientesProductos(
             pageNumber,
-            pageSize
+            pageSize,
+            'filtro'
           ).pipe(catchError(() => observableOf(null)));
         }),
         map((data: any) => {
@@ -93,12 +94,26 @@ export class PrediccionOrdenesComponent {
   
   }
   aplicarFiltroTabla(event : Event){
-    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-    this.filteredOrders.data = this.data.filter(order => 
-      // order.orderId.toString().includes(filterValue) ||
-      order.customerName.toLowerCase().includes(filterValue) ||
-      order.shipcity.toLowerCase().includes(filterValue) 
-      // order.shipcountry.toLowerCase().includes(filterValue)
+    var filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    if(filterValue === ''){filterValue = "filtro"}
+    // this.filteredOrders.data = this.data.filter(order => 
+    //   // order.orderId.toString().includes(filterValue) ||
+    //   order.customerName.toLowerCase().includes(filterValue) ||
+    //   order.shipcity.toLowerCase().includes(filterValue) 
+    //   // order.shipcountry.toLowerCase().includes(filterValue)
+    // );
+    const pageNumber = this.paginator.pageIndex + 1;
+    const pageSize = this.paginator.pageSize;
+    this.customerServicio.ConsultarClientesProductos(
+      pageNumber,
+      pageSize, filterValue
+    ).subscribe(data => 
+        
+      {
+
+        this.data = data.value.records;
+       this.resultsLength = data.value.totalRecords
+    }
     );
   }
   verOrdenes(customerName: string): void {

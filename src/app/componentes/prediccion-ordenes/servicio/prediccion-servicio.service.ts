@@ -12,8 +12,8 @@ export class PrediccionServicioService {
 
   constructor(private http : HttpClient) { }
 
-  ConsultarClientesProductos(pageNumber: number, pageSize: number):Observable<ResponseApi>{
-    return this.http.get<ResponseApi>(`${this.urlApi}lista?pageNumber=${pageNumber}&pageSize=${pageSize}`)
+  ConsultarClientesProductos(pageNumber: number, pageSize: number, filtro:string):Observable<ResponseApi>{
+    return this.http.get<ResponseApi>(`${this.urlApi}lista?pageNumber=${pageNumber}&pageSize=${pageSize}&filtro=${filtro}`)
 
   }
 }
