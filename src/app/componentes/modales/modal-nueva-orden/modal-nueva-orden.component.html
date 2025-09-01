@@ -80,8 +80,8 @@
         type="text"
         formControlName="freight"
         (input)="onInput($event, 'freight')"
-        (blur)="formatCurrency('freight')"
-        (focus)="removeFormat('freight')"
+        (blur)="formatMoneda('freight')"
+        (focus)="removerFormato('freight')"
       >
     </mat-form-field>
   
@@ -102,8 +102,8 @@
           matInput type="text" 
           formControlName="unitPrice"
           (input)="onInput($event,'unitPrice')"
-          (blur)="formatCurrency('unitPrice')"
-          (focus)="removeFormat('unitPrice')"
+          (blur)="formatMoneda('unitPrice')"
+          (focus)="removerFormato('unitPrice')"
         >
       </mat-form-field>
   
@@ -116,8 +116,8 @@
         <mat-label>Discount*</mat-label>
         <input matInput type="text" formControlName="discount"
           (input)="onInput($event,'discount')"
-          (blur)="formatCurrency('discount')"
-          (focus)="removeFormat('discount')"
+          (blur)="formatMoneda('discount')"
+          (focus)="removerFormato('discount')"
         >
       </mat-form-field>
     </div>

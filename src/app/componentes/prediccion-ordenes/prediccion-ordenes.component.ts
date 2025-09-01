@@ -55,8 +55,6 @@ export class PrediccionOrdenesComponent {
           return this.customerServicio.ConsultarClientesProductos(
             pageNumber,
             pageSize
-            // this.sort.direction,
-            // this.paginator.pageIndex,
           ).pipe(catchError(() => observableOf(null)));
         }),
         map((data: any) => {
@@ -68,9 +66,6 @@ export class PrediccionOrdenesComponent {
             return [];
           }
 
-          // Only refresh the result length if there is new data. In case of rate
-          // limit errors, we do not want to reset the paginator to zero, as that
-          // would prevent users from re-triggering requests.
           this.resultsLength = data.value.totalRecords;
           return data.value;
         }),
@@ -78,11 +73,7 @@ export class PrediccionOrdenesComponent {
       .subscribe(data => 
         
         {
-//           this.filteredOrders.data = data.records;
-// this.filteredOrders.sort = this.sort;
-// this.filteredOrders.paginator = this.paginator;
 
-        //   this.filteredOrders = data.records;
           this.data = data.records;
          this.resultsLength = data.totalRecords
       }
@@ -110,7 +101,7 @@ export class PrediccionOrdenesComponent {
       // order.shipcountry.toLowerCase().includes(filterValue)
     );
   }
-  viewOrders(customerName: string): void {
+  verOrdenes(customerName: string): void {
     const dialogRef = this.dialog.open(ModalVerOrdenesComponent, {
       width: '800px',
       data: { customerName: customerName }
@@ -121,7 +112,7 @@ export class PrediccionOrdenesComponent {
     });
   }
 
-  newOrder(customerName: string): void {
+ crearOrden(customerName: string): void {
     const dialogRef = this.dialog.open(ModalNuevaOrdenComponent, {
       width: '600px',
       data: { customerName: customerName }
@@ -130,7 +121,7 @@ export class PrediccionOrdenesComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Nueva orden creada:', result);
-        // Refrescar datos si es necesario
+       
       }
     });
   

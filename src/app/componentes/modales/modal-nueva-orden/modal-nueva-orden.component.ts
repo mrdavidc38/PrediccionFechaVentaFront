@@ -74,8 +74,8 @@ export class ModalNuevaOrdenComponent implements OnInit {
       
       var id = parseInt(this.data.customerName);
       const order: Order = {
-        orderid: 0, // se genera en backend normalmente
-        custid: id, // si no se maneja en este form
+        orderid: 0,
+        custid: id, 
         empid: formValues.employee,
         orderdate: new Date(formValues.orderDate).toISOString(),
         requireddate: new Date(formValues.requiredDate).toISOString(),
@@ -117,27 +117,23 @@ export class ModalNuevaOrdenComponent implements OnInit {
         return 0;
       }
       
-      // Si ya es un número, devolverlo
       if (typeof value === 'number') {
         return value;
       }
       
-      // Convertir a string y limpiar
       let cleanValue = value.toString();
       
-      // Remover espacios al inicio y final
       cleanValue = cleanValue.trim();
       
-      // Remover símbolos de moneda, comas, espacios internos
       cleanValue = cleanValue.replace(/[$,\s]/g, '');
       
-      // Convertir a número
+      
       const numericValue = parseFloat(cleanValue);
       
-      // Validar que sea un número válido
+   
       return isNaN(numericValue) ? 0 : numericValue;
     }
-    formatCurrency(controlName: string) {
+    formatMoneda(controlName: string) {
       let value = this.orderForm.get(controlName)?.value;
       if (value !== null && value !== '') {
         this.orderForm.get(controlName)?.setValue(
@@ -146,7 +142,7 @@ export class ModalNuevaOrdenComponent implements OnInit {
       }
     }
     
-    removeFormat(controlName: string) {
+    removerFormato(controlName: string) {
       let value = this.orderForm.get(controlName)?.value;
       if (value) {
         this.orderForm.get(controlName)?.setValue(value.replace(/[^0-9.]/g, ''));

@@ -4,7 +4,7 @@
   <div class="search-container">
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Search orders</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Search by order ID, ship name, etc.">
+      <input matInput (keyup)="aplicarFiltro($event)" placeholder="Search by order ID, ship name, etc.">
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
@@ -82,46 +82,7 @@
             <td mat-cell *matCellDef="let order">{{ order.shippostalcode }}</td>
           </ng-container>
 
-      <!-- <ng-container matColumnDef="shippedDate">
-        <th mat-header-cell *matHeaderCellDef>Shipped Date</th>
-        <td mat-cell *matCellDef="let order">
-          <span *ngIf="order.shippedDate; else notShipped">
-            {{order.shippedDate | date:'MMM dd, yyyy'}}
-          </span>
-          <ng-template #notShipped>
-            <mat-chip color="warn">Pending</mat-chip>
-          </ng-template>
-        </td>
-      </ng-container> -->
 
-      <!-- <ng-container matColumnDef="freight">
-        <th mat-header-cell *matHeaderCellDef>Freight</th>
-        <td mat-cell *matCellDef="let order">\${{order.freight | number:'1.2-2'}}</td>
-      </ng-container> -->
-
-      <!-- <ng-container matColumnDef="shipInfo">
-        <th mat-header-cell *matHeaderCellDef>Ship To</th>
-        <td mat-cell *matCellDef="let order">
-          <div class="ship-info">
-            <strong>{{order.shipName}}</strong><br>
-            <small>{{order.shipCity}}, {{order.shipCountry}}</small>
-          </div>
-        </td>
-      </ng-container> -->
-
-      <!-- <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let order">
-          <button mat-icon-button color="primary" (click)="viewOrderDetails(order)" 
-                  matTooltip="View details">
-            <mat-icon>visibility</mat-icon>
-          </button>
-          <button mat-icon-button color="accent" (click)="editOrder(order)"
-                  matTooltip="Edit order">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </td>
-      </ng-container> -->
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -138,7 +99,5 @@
 
 <mat-dialog-actions align="end">
   <button mat-button (click)="onClose()">Close</button>
-  <button mat-raised-button color="primary" (click)="exportOrders()">
-    <mat-icon>download</mat-icon> Export
-  </button>
+
 </mat-dialog-actions>
